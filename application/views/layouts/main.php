@@ -26,9 +26,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo base_url() ?>">Home</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo base_url() ?>/user/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
-      </ul>
+      <?php if ($this->session->userdata('logged_in')) : ?>
+     
+      <?php else : ?>
+      	<ul class="nav navbar-nav navbar-right">
+      		<li><a href="<?php echo base_url() ?>/user/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+      	</ul>
+      <?php endif ?>
     </div>
   </div>
 </nav>
