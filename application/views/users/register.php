@@ -47,8 +47,7 @@ echo form_open('user/register',$form_attr); ?>
 		$data_input = array(
 			'name' => 'username',
 			'placeholder' => 'Please Enter user name',
-			'class' => 'form-control',
-			'value' => set_value('username')
+			'class' => 'form-control'
 		);
 		echo form_input($data_input);
 		?>
@@ -90,8 +89,6 @@ echo form_open('user/register',$form_attr); ?>
 
 	<?php
 	$data_input = array(
-		'name' => 'username',
-		'placeholder' => 'Please Enter Username',
 		'class' => 'btn btn-default',
 		'value' => 'Register'
 	);

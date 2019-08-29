@@ -18,7 +18,6 @@ class User_model extends CI_Model{
 	public function login_user($username,$password){
 
 		$encrypt_pass = md5($password);
-
 		// where clause
 
 		$this->db->where('username',$username);

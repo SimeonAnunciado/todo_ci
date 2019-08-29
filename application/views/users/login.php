@@ -1,32 +1,40 @@
-<?php 
-$form_attr = array('id' => 'form_login');
-echo form_open('user/login',$form_attr); ?>
+<?php if ($this->session->userdata('logged_in')) : ?>
+	<p>You are now login as <?php echo $this->session->userdata('username') ?> </p>
+	<a href="<?php echo base_url() ?>user/logout" class="btn btn-primary">Logout</a>
+
+
+	<?php else: ?>
+
+	<?php 
+
+	$form_attr = array('id' => 'form_login');
+	echo form_open('user/login',$form_attr); ?>
 	
 
 	<div class="form-group">
-	<?php echo form_label('Username');
-	$data_input = array(
-					'name' => 'username',
-					'placeholder' => 'Please Enter Username',
-					'class' => 'form-control',
-					'value' => set_value('username')
-				);
-	echo form_input($data_input);
-	 ?>
+		<?php echo form_label('Username');
+		$data_input = array(
+			'name' => 'username',
+			'placeholder' => 'Please Enter Username',
+			'class' => 'form-control',
+			'value' => set_value('username')
+		);
+		echo form_input($data_input);
+		?>
 	</div>
 
 	<div class="form-group">
 
-	<?php
-	echo form_label('Password');
-	$data_input = array(
-		'name' => 'password',
-		'placeholder' => 'Please Enter Username',
-		'class' => 'form-control',
-		'value' => set_value('username')
-	);
-	echo form_password($data_input);
-	?>
+		<?php
+		echo form_label('Password');
+		$data_input = array(
+			'name' => 'password',
+			'placeholder' => 'Please Enter Username',
+			'class' => 'form-control',
+			'value' => set_value('username')
+		);
+		echo form_password($data_input);
+		?>
 	</div>
 
 
@@ -38,10 +46,14 @@ echo form_open('user/login',$form_attr); ?>
 		'value' => 'SignIn'
 	);
 	echo form_submit($data_input);
-
 	?>
+	<?php echo form_close(); ?>
 
 
-<?php echo form_close(); ?>
+
+<?php endif ?>
+
+
+
 
 

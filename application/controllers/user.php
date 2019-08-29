@@ -32,8 +32,8 @@ class User extends CI_Controller{
 
 	public function login(){
 		
-		$this->form_validation->set_rules('username' , 'User Name', 'trim|required');
-		$this->form_validation->set_rules('password' , 'Password', 'trim|required');
+		$this->form_validation->set_rules('username' ,'User Name', 'trim|required');
+		$this->form_validation->set_rules('password' ,'Password', 'trim|required');
 
 
 
@@ -67,6 +67,14 @@ class User extends CI_Controller{
 
 		}
 
+	}
+
+	public function logout(){
+		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('username');
+		$this->session->sess_destroy();
+		redirect('home/index');
 	}
 }
 
