@@ -41,10 +41,18 @@ class List_model extends CI_Model{
 	public function delete_model($id){
 		$query = $this->db->where('id',$id)
 				->delete('lists');
-
 				return $query;
 	}
 
+
+	public function get_my_list($id){
+		$query = $this->db->select('*')
+		->from('lists')
+		->where('id' , $id)
+		->get();
+		return $query->result();
+		
+	}
 }
 
 ?>

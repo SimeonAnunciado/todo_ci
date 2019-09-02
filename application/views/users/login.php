@@ -1,6 +1,32 @@
 <?php if ($this->session->userdata('logged_in')) : ?>
 	<?php if ($msg = $this->session->flashdata('response')) : ?>
 	<div class="alert alert-success"><?php echo $msg; ?></div>
+	
+	<table class="table table-bordred">
+		<thead>
+			<tr>
+				<th>Task Name</th>
+				<th>Task Body</th>
+				<th>Task Date</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($my_list as $list ) : ?>
+
+			 <tr>
+				<td><?php echo $list->list_name ?></td>
+				<td><?php echo $list->list_body ?></td>
+				<td><?php echo $list->create_date ?></td>
+				<td><a href="#" class="btn btn-success">View</a>&nbsp;<a href="#" class="btn btn-danger">Delete</a></td>
+			</tr> 
+
+			<?php endforeach ?>
+		
+		</tbody>
+		
+	</table>
+
 
 	<?php endif ?>
 
