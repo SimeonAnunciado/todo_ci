@@ -25,34 +25,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo base_url() ?>">Home</a></li>
+        <?php if ($this->session->userdata('logged_in')) :  ?>
+        <li class=""><a href="<?php echo base_url() ?>lists">My List</a></li>
+        <?php endif ?>
+
       </ul>
       <?php if ($this->session->userdata('logged_in')) : ?>
-     
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="<?php echo base_url() ?>/user/register"><span class="glyphicon glyphicon-user"></span> Welcome , <?php echo $this->session->userdata('username'); ?></a></li>
+           <li><a href="<?php echo base_url() ?>/user/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+        </ul>
       <?php else : ?>
       	<ul class="nav navbar-nav navbar-right">
-      		<li><a href="<?php echo base_url() ?>/user/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+      		<li><a href="<?php echo base_url() ?>user/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
       	</ul>
       <?php endif ?>
     </div>
   </div>
 </nav>
-
+<?php if(!$this->session->userdata('logged_in')) :?> 
 <div class="container">
-	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">Sign In</div>
-			<div class="panel-body">
-				<?php $this->load->view('users/login') ?>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-8">
+    <div class="row" style="margin-top: 70px;">
+      <div class="col-md-2"></div>
+    	<div class="col-md-8">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">Sign In</div>
+    			<div class="panel-body">
+    				<?php $this->load->view($main_content) ?>
+    			</div>
+    		</div>
+      </div>
+      <div class="col-md-2"></div>
 
-		
-
-		<?php $this->load->view($main_content); ?>
-	</div>
+  	</div>
 </div>
+ <?php else :?> 
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <?php $this->load->view($main_content); ?>
+      </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+<?php endif ?>
+
+
 
 <script src="<?php echo base_url() ?>/assets/js/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/bootstrap.min.js"></script>

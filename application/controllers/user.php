@@ -38,7 +38,8 @@ class User extends CI_Controller{
 
 
 		if ($this->form_validation->run() == FALSE) {
-			
+			$data['main_content'] = 'users/login';
+			$this->load->view('layouts/main',$data);
 			
 		}else{
 
@@ -55,7 +56,7 @@ class User extends CI_Controller{
 				);
 
 				$this->session->set_userdata($user_data);
-				$this->session->set_flashdata('response' , 'Success logging in');
+				$this->session->set_flashdata('response' , 'Success Log in Welcome!');
 				redirect('home/index');
 			}else{
 				$this->session->set_flashdata('response' , 'Sorry the info that you entered is invalid');

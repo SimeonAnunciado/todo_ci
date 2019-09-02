@@ -5,13 +5,9 @@ class Home extends CI_Controller {
 
 
 	public function index(){
-		$data['main_content'] = 'home';
+		$data['main_content'] = 'users/login';
 		$this->load->view('layouts/main', $data);
-		
-		
 	}
 
-	public function test(){
-		echo 'test';
-	}
+	
 }

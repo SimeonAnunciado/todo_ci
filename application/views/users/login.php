@@ -1,11 +1,14 @@
 <?php if ($this->session->userdata('logged_in')) : ?>
-	<p>You are now login as <?php echo $this->session->userdata('username') ?> </p>
-	<a href="<?php echo base_url() ?>user/logout" class="btn btn-primary">Logout</a>
+	<?php if ($msg = $this->session->flashdata('response')) : ?>
+	<div class="alert alert-success"><?php echo $msg; ?></div>
 
+	<?php endif ?>
 
 	<?php else: ?>
 
 	<?php 
+
+	echo validation_errors('<div class="alert alert-danger">','</div>');
 
 	$form_attr = array('id' => 'form_login');
 	echo form_open('user/login',$form_attr); ?>

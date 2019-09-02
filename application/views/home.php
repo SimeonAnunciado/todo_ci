@@ -4,5 +4,12 @@
 
 <?php endif ?>
 
+<?php if ($this->session->flashdata('noaccess')) : ?>
+
+	<div class="alert alert-danger"><?php echo $this->session->flashdata('noaccess');  ?></div>
+
+<?php endif ?>
+
+
 <h1>Welcome to Code Igniter</h1>
 <p>recusandae saepe ratione ullam nostrum illo voluptate.</p>
